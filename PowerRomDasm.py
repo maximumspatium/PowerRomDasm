@@ -80,8 +80,9 @@ class M68KDasm:
                         else:
                             label = 'l_{:x}'.format(ea)
                             ops.append(label)
-                            if ea >= addr and ea < (addr + size):
+                            if ea not in self.labels:
                                 self.labels[ea] = label
+                        # discard current op because we've just replaced it
                         op_list.pop(0)
                     elif op.address_mode == M68K_AM_PCI_INDEX_BASE_DISP:
                         ops.append(instr.op_str)
@@ -96,8 +97,9 @@ class M68KDasm:
                         else:
                             label = 'l_{:x}'.format(ea)
                             ops.append(label)
-                            if ea >= addr and ea < (addr + size):
+                            if ea not in self.labels:
                                 self.labels[ea] = label
+                        # discard current op because we've just replaced it
                         op_list.pop(0)
                     else:
                         ops.append(op_list.pop(0))
