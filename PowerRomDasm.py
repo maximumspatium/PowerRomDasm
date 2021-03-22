@@ -156,6 +156,15 @@ class ROMDisassembler:
                 print("dc.l\t0x%X" % struct.unpack('>I', self.rom_data[offset:offset+4]))
             else:
                 print("INVALID SIZE!")
+        elif format == 'dec':
+            if size == 1:
+                print("dc.b\t%d" % struct.unpack('>B', self.rom_data[offset:offset+1]))
+            elif size == 2:
+                print("dc.w\t%d" % struct.unpack('>H', self.rom_data[offset:offset+2]))
+            elif size == 4:
+                print("dc.l\t%d" % struct.unpack('>I', self.rom_data[offset:offset+4]))
+            else:
+                print("INVALID SIZE!")
         elif format == 'offset':
             dest_offset = struct.unpack('>I', self.rom_data[offset:offset+4])[0]
             if dest_offset in self.rom_db['annot_items']:
