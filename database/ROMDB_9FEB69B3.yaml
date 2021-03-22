@@ -43,5 +43,39 @@ annot_items:
     0x2E6: {type: code, arch: 68k, size: 0x1C2, label: BootRetry}
     0x4A8: {type: code, arch: 68k, size: 0x4E, label: WhichCPU}
     0x4F6: {type: code, arch: 68k, size: 0xC, label: WhichBoard}
-    0x502: {type: code, arch: 68k, size: 0x100, label: SetUpTimeK}
+    0x502: {type: code, arch: 68k, size: 0x6A, label: SetUpTimeK}
+    0x56C: {type: code, arch: 68k, size: 0x8, label: TimerInt}
+    0x574: {type: array, format: hex, size: 0x12, elsize: 2, label: TimingTable}
+    0x586: {type: code, arch: 68k, size: 0x10, label: DbraTime}
+    0x596: {type: code, arch: 68k, size: 0x18, label: SCCTime}
+    0x5AE: {type: code, arch: 68k, size: 0x2E, label: SCSITime}
+    0x5DC: {type: code, arch: 68k, size: 0x18, label: VIATime}
+    0x5F4: {type: code, arch: 68k, size: 2, label: JmpTblInit}
+    0x5F6: {type: code, arch: 68k, size: 0xE, label: JmpTbl2}
+    0x604: {type: code, arch: 68k, size: 0xA, label: FillWithOnes}
+    0x60E: {type: code, arch: 68k, size: 0x18, label: CompBootStack}
+    0x626: {type: code, arch: 68k, size: 0x50, label: ConfigureRAM}
+    0x676: {type: code, arch: 68k, size: 0x66, label: SetUpSysAppZone}
+    0x6F8: {type: code, arch: 68k, size: 0xEA, label: CheckForResetPRAM}
+    0x7E2: {type: array, format: hex, size: 0x18, elsize: 4, label: ResetPRAMKeys}
+    0x7FA: {type: code, arch: 68k, size: 0x3E, label: GetPRAM}
+    0x838: {type: code, arch: 68k, size: 0x26, label: SetPRAM32}
+    0x85E: {type: code, arch: 68k, size: 0xC, label: InitNonMMU}
+    0x86A: {type: code, arch: 68k, size: 0x30, label: InitHiMemGlobals}
+    0x89A: {type: code, arch: 68k, size: 0xEE, label: InitGlobalVars}
+    0x988: {type: code, arch: 68k, size: 0x10, label: InitCrsrVars}
+    0x998: {type: code, arch: 68k, size: 0x86, label: InitCrsrMgr}
+    0xA1E: {type: array, format: dec, size: 0x8, elsize: 1, label: MouseBytes}
+    0xA26: {type: array, format: hex, size: 0x5C, elsize: 2, label: OurSwitch}
+    0xA82: {type: array, format: 'dec', size: 6, elsize: 2, label: WDCBSwitch}
+    0xA88: {type: array, format: 'dec', size: 10, elsize: 2, label: PMSPSwitch}
+    0xA92: {type: int, format: hex, size: 2, label: WDCBSwOS}
+    0xA94: {type: int, format: hex, size: 2, label: PMSPSwOS}
+    0xA96: {type: code, arch: 68k, size: 0x14, label: InitSwitcherTable}
+    0xAAA: {type: code, arch: 68k, size: 0xEC, label: SetupHWBases}
+    0xB96: {type: code, arch: 68k, size: 0x1E, label: InitSlots}
+    0xBB4: {type: code, arch: 68k, size: 0x24, label: InitIOPStuff}
+    0xBD8: {type: code, arch: 68k, size: 0x14, label: InitDeviceMgr}
+    0xBEC: {type: code, arch: 68k, size: 0xBA, label: LoadDrivers}
+    0xCD2: {type: code, arch: 68k, size: 0x62, label: DrawBeepScreen}
     0x3A24A: {type: code, arch: 68k, size 4, label: DoEject}
