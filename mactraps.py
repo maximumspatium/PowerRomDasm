@@ -46,4 +46,5 @@ TRAP_TABLE = {
     0xA9A2 : "_LoadResource",
     0xA9AF : "_ResError",
     0xA9C9 : "_SysError",
+    0xABEB : "_DisplayDispatch",
 }

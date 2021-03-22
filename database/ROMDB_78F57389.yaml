@@ -1,0 +1,36 @@
+main_info:
+    short_cksum: 0x78F57389
+    name: "Power Macintosh G3 Beige v3 ROM file"
+    phys_addr: 0xFFC00000 # starting address of this ROM
+
+annot_items:
+    0: {type: int, format: hex, size: 4, label: BaseOfRom, comment: ROM checksum}
+    4: {type: int, format: offset, size: 4, label: StartPC}
+    8: {type: int, format: hex, size: 1, label: MachineType}
+    9: {type: int, format: hex, size: 1, label: ROMVersion}
+    0xA: {type: code, arch: 68k, size: 4, label: JStartBoot}
+    0xE: {type: code, arch: 68k, size: 4, label: BadDisk}
+    0x12: {type: int, format: hex, size: 2, label: ROMRelease}
+    0x14: {type: int, format: hex, size: 2, label: PatchFlags}
+    0x16: {type: int, format: offset, size: 4, label: ForeignOSVecT}
+    0x1A: {type: int, format: offset, size: 4, label: RomRsrc}
+    0x1E: {type: code, arch: 68k, size: 4, label: Eject}
+    0x22: {type: int, format: offset, size: 4, label: DispOff}
+    0x26: {type: code, arch: 68k, size: 4, label: Critical}
+    0x2A: {type: code, arch: 68k, size: 4, label: ResetEntry}
+    0x2E: {type: int, format: hex, size: 1, label: RomLoc}
+    0x30: {type: array, format: hex, size: 16, elsize: 4, label: ROMCksum128}
+    0x40: {type: int, format: hex, size: 4, label: ROMSize68k}
+    0x44: {type: int, format: offset, size: 4, label: EraseMyIconOffs}
+    0x48: {type: int, format: offset, size: 4, label: InitSys7ToolboxOffs}
+    0x4E: {type: array, format: offset, size: 28, elsize: 4, label: ForeignOS}
+    0x4C: {type: int, format: hex, size: 2, label: ROMSubRelease}
+    0x6A: {type: code, arch: 68k, size: 6, label: GoofyDoEject}
+    0x70: {type: int, format: hex, size: 4, label: TCOff}
+    0x74: {type: code, arch: 68k, size: 0x66, label: StartBoot}
+    0xDA: {type: code, arch: 68k, size: 0x122, label: StartInit1}
+    0x1FC: {type: code, arch: 68k, size: 0x232, label: BootRetry}
+    0x42E: {type: code, arch: 68k, size: 0x4E, label: WhichCPU}
+    0x47C: {type: code, arch: 68k, size: 0xC, label: WhichBoard}
+    0x488: {type: code, arch: 68k, size: 0x100, label: SetUpTimeK}
+    0x263CE: {type: code, arch: 68k, size 4, label: DoEject}
