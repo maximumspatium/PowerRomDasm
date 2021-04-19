@@ -78,4 +78,36 @@ annot_items:
     0xBD8: {type: code, arch: 68k, size: 0x14, label: InitDeviceMgr}
     0xBEC: {type: code, arch: 68k, size: 0xBA, label: LoadDrivers}
     0xCD2: {type: code, arch: 68k, size: 0x62, label: DrawBeepScreen}
+    0x13B0: {type: code, arch: 68k, size: 0xA2, label: FindStartupDevice}
+    0x1452: {type: code, arch: 68k, size: 0xA0, label: EmbarkOnSearch}
+    0x14F2: {type: code, arch: 68k, size: 0x70, label: LoadSlotDrivers}
+    0x1562: {type: code, arch: 68k, size: 0x4E, label: LoadSCSIDrivers}
+    0x15B0: {type: code, arch: 68k, size: 0xBC, label: WaitForPollDrive}
+    0x166C: {type: code, arch: 68k, size: 0x30, label: FindNextCandidate}
+    0x169C: {type: code, arch: 68k, size: 0xE, label: NextDQEntry}
+    0x16AA: {type: code, arch: 68k, size: 0x1E, label: SelectDevice}
+    0x16C8: {type: code, arch: 68k, size: 0x6, label: CheckMouseEject}
+    0x16CE: {type: code, arch: 68k, size: 0xC, label: EjectMe}
+    0x16DA: {type: code, arch: 68k, size: 0x2, label: DontEject}
+    0x16DC: {type: code, arch: 68k, size: 0x2A, label: GetStartupInfo}
+    0x1706: {type: code, arch: 68k, size: 0x30, label: ReactToFailure}
+    0x1736: {type: code, arch: 68k, size: 0x5C, label: Ck4SupportsPartition}
+    0x1792: {type: code, arch: 68k, size: 0x24, label: IsItDefault}
+    0x17B6: {type: code, arch: 68k, size: 0x8, label: IsItFloppyOrDefault}
+    0x17BE: {type: code, arch: 68k, size: 0x8, label: IsItFloppy}
+    0x17C6: {type: code, arch: 68k, size: 0x4, label: IsItAnything}
+    0x17CA: {type: code, arch: 68k, size: 0x48, label: VisualUpdate}
+    0x1812: {type: code, arch: 68k, size: 0xA, label: HappyMac}
+    0x181C: {type: code, arch: 68k, size: 0x18, label: EraseMyIcon}
+    0x1834: {type: code, arch: 68k, size: 0x38, label: PlotMyIcon}
+    0x186C: {type: code, arch: 68k, size: 0x34, label: PushIconRect}
+    0x14650:
+      type: code
+      arch: 68k
+      size: 0x7C
+      label: EMT1010
+      subregs:
+        - type: align
+          offset: 0x146B2
+          boundary: 8
     0x3A24A: {type: code, arch: 68k, size 4, label: DoEject}
