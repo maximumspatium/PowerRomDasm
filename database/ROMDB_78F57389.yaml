@@ -33,4 +33,20 @@ annot_items:
     0x42E: {type: code, arch: 68k, size: 0x4E, label: WhichCPU}
     0x47C: {type: code, arch: 68k, size: 0xC, label: WhichBoard}
     0x488: {type: code, arch: 68k, size: 0x100, label: SetUpTimeK}
+    0x9EE0:
+      type: code
+      arch: 68k
+      size: 0x154
+      label: CudaDispatch
+      subregs:
+      - type: int
+        offset: 0xA032
+        size: 2
     0x263CE: {type: code, arch: 68k, size 4, label: DoEject}
+    0x33DB0: {type: code, arch: 68k, size: 0x40, label: ADBProc}
+    0x33DF0: {type: code, arch: 68k, size: 0x3C, label: PostInit}
+    0x33E2C: {type: code, arch: 68k, size: 0x50, label: InitADBDrvr}
+    0x33E7C: {type: code, arch: 68k, size: 0x8C, label: InitADB}
+    0x340B6: {type: code, arch: 68k, size: 0x12, label: RSetKMap}
+    0x340C8: {type: code, arch: 68k, size: 0x32, label: DefaultDev}
+    0x340FA: {type: code, arch: 68k, size: 0x34, label: flushkbds}
