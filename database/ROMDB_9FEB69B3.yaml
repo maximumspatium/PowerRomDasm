@@ -110,4 +110,195 @@ annot_items:
         - type: align
           offset: 0x146B2
           boundary: 8
+    # Slot Manager 2.3
+    0x1FA80: {type: fixlenstr, size: 16, label: SlotMgrVersion}
+    0x1FA90: {type: code, arch: 68k, size: 0x0E, label: SlotManager}
+    0x1FA9E: {type: code, arch: 68k, size: 6, label: SlotEmpty}
+    0x1FAA4: {type: code, arch: 68k, size: 10, label: SLOTEMPTY}
+    0x1FAAE: {type: align, boundary: 16}
+    0x1FAB0: {type: code, arch: 68k, size: 0x1C, label: ReadSlotByte}
+    0x1FACC: {type: code, arch: 68k, size: 10, label: READSLOTBYTE}
+    0x1FAD6: {type: align, boundary: 16}
+    0x1FAE0: {type: code, arch: 68k, size: 0x1C, label: ReadSlotWord}
+    0x1FAFC: {type: code, arch: 68k, size: 10, label: READSLOTWORD}
+    0x1FB06: {type: align, boundary: 16}
+    0x1FB10: {type: code, arch: 68k, size: 0x1E, label: ReadSlotLong}
+    0x1FB2E: {type: code, arch: 68k, size: 10, label: READSLOTLONG}
+    0x1FB38: {type: align, boundary: 16}
+    0x1FB40: {type: code, arch: 68k, size: 0x94, label: GetcString}
+    0x1FBD4: {type: code, arch: 68k, size: 10, label: GETCSTRING}
+    0x1FBDE: {type: align, boundary: 16}
+    0x1FBE0: {type: code, arch: 68k, size: 0x46, label: GetSlotBlock}
+    0x1FC26: {type: code, arch: 68k, size: 10, label: GETSLOTBLOCK}
+    0x1FC30: {type: code, arch: 68k, size: 0xC, label: FindSlotStruct}
+    0x1FC3C: {type: code, arch: 68k, size: 10, label: FINDSLOTSTRUCT}
+    0x1FC46: {type: align, boundary: 16}
+    0x1FC50: {type: code, arch: 68k, size: 0x86, label: ReadSlotStruct}
+    0x1FCD6: {type: code, arch: 68k, size: 10, label: READSLOTSTRUCT}
+    0x1FCE0: {type: code, arch: 68k, size: 0x24, label: ReadSlotInfo}
+    0x1FD04: {type: code, arch: 68k, size: 10, label: READSLOTINFO}
+    0x1FD0E: {type: align, boundary: 16}
+    0x1FD10: {type: code, arch: 68k, size: 0x14, label: SlotDisposPtr}
+    0x1FD24: {type: code, arch: 68k, size: 10, label: SLOTDISPOSPTR}
+    0x1FD2E: {type: align, boundary: 16}
+    0x1FD30: {type: code, arch: 68k, size: 0x72, label: ReadSlotDrvrName}
+    0x1FDA2: {type: code, arch: 68k, size: 10, label: READSLOTDRVRNAME}
+    0x1FDAC: {type: align, boundary: 16}
+    0x1FDB0: {type: code, arch: 68k, size: 0xC6, label: FindDevBase}
+    0x1FE76: {type: code, arch: 68k, size: 10, label: FINDDEVBASE}
+    0x1FE80: {type: code, arch: 68k, size: 0x1A, label: CardChanged}
+    0x1FE9A: {type: code, arch: 68k, size: 10, label: CARDCHANGED}
+    0x1FEA4: {type: align, boundary: 16}
+    0x1FEB0: {type: code, arch: 68k, size: 2, label: SlotExec}
+    0x1FEB2: {type: code, arch: 68k, size: 0x28, label: Revision2}
+    0x1FEDA: {type: code, arch: 68k, size: 0x44, label: BeginSlotExec}
+    0x1FF1E: {type: code, arch: 68k, size: 0x2E, label: FixTrident}
+    0x1FF4C:
+        type: struct
+        label: CompareTbl
+        fields:
+            - type: int
+              format: hex
+              size: 4
+            - type: array
+              format: hex
+              size: 14
+              elsize: 2
+    0x1FF5E: {type: code, arch: 68k, size: 10, label: SLOTEXEC}
+    0x1FF68: {type: align, boundary: 16}
+    0x1FF70: {type: code, arch: 68k, size: 0x90, label: CalcsPointer}
+    0x20000: {type: code, arch: 68k, size: 10, label: CALCSPOINTER}
+    0x2000A: {type: align, boundary: 16}
+    0x20010: {type: code, arch: 68k, size: 4, label: GetSlotDrvr}
+    0x20014: {type: code, arch: 68k, size: 0x36, label: DynLoadDrvr}
+    0x2004A: {type: code, arch: 68k, size: 0x74, label: StatLoadDrvr}
+    0x200BE: {type: code, arch: 68k, size: 0x2C, label: BeginGetSlotDrvr}
+    0x200EA: {type: code, arch: 68k, size: 10, label: GETSLOTDRVR}
+    0x200F4: {type: align, boundary: 16}
+    0x20100: {type: code, arch: 68k, size: 0x8E, label: GetDriverPatch}
+    0x2018E: {type: code, arch: 68k, size: 0x90, label: GetDevIndex}
+    0x2021E: {type: array, format: hex, size: 22, elsize: 2, label: DevTbl}
+    0x20234:
+        type: struct
+        label: LoadTbl
+        fields:
+            - type: array
+              format: hex
+              size: 8
+              elsize: 4
+            - type: array
+              format: hex
+              size: 4
+              elsize: 1
+            - type: array
+              format: hex
+              size: 8
+              elsize: 4
+            - type: array
+              format: hex
+              size: 4
+              elsize: 1
+    0x2024C: {type: array, format: hex, size: 8, elsize: 4, label: JsrTbl}
+    0x20254: {type: code, arch: 68k, size: 10, label: GETDRIVERPATCH}
+    0x2025E: {type: code, arch: 68k, size: 10, label: GETDEVINDEX}
+    0x20268: {type: align, boundary: 16}
+    0x20270: {type: code, arch: 68k, size: 8, label: ReadSlotPRAM}
+    0x20278: {type: code, arch: 68k, size: 10, label: PutSlotPRAM}
+    0x20282: {type: code, arch: 68k, size: 8, label: InitSlotPRAM}
+    0x2028A: {type: code, arch: 68k, size: 0x6C, label: CommonPRAM}
+    0x202F6: {type: code, arch: 68k, size: 10, label: INITSLOTPRAM}
+    0x20300: {type: code, arch: 68k, size: 10, label: PUTSLOTPRAM}
+    0x2030A: {type: code, arch: 68k, size: 10, label: READSLOTPRAM}
+    0x20314: {type: align, boundary: 16}
+    0x20320: {type: code, arch: 68k, size: 0x1C, label: FindsInfoRecPtr}
+    0x2033C: {type: code, arch: 68k, size: 10, label: FINDSINFORECPTR}
+    0x20346: {type: align, boundary: 16}
+    0x20350: {type: code, arch: 68k, size: 0x1E, label: FindsRsrcPtr}
+    0x2036E: {type: code, arch: 68k, size: 10, label: FINDSRSRCPTR}
+    0x20378: {type: code, arch: 68k, size: 10, label: GETSRSRCPTR}
+    0x20382: {type: align, boundary: 16}
+    0x20390: {type: code, arch: 68k, size: 0x42, label: PtrToSlot}
+    0x203D2: {type: code, arch: 68k, size: 10, label: PTRTOSLOT}
+    0x203DC: {type: align, boundary: 16}
+    0x203E0: {type: code, arch: 68k, size: 0x42, label: ReadFHeader}
+    0x20422: {type: code, arch: 68k, size: 10, label: READFHEADER}
+    0x2042C: {type: align, boundary: 16}
+    0x20430: {type: code, arch: 68k, size: 0x1E, label: CkCardStat}
+    0x2044E: {type: code, arch: 68k, size: 10, label: CKCARDSTAT}
+    0x20458: {type: align, boundary: 16}
+    0x20460: {type: code, arch: 68k, size: 0xE, label: SlotVersion}
+    0x2046E: {type: code, arch: 68k, size: 10, label: SLOTVERSION}
+    0x20478: {type: align, boundary: 16}
+    0x20480: {type: code, arch: 68k, size: 10, label: NextsRsrc}
+    0x2048A: {type: code, arch: 68k, size: 0x26, label: GetsRsrc}
+    0x204B0: {type: code, arch: 68k, size: 4, label: NextTypesRsrc}
+    0x204B4: {type: code, arch: 68k, size: 0x6A, label: GetTypesRsrc}
+    0x2051E: {type: array, format: hex, size: 16, elsize: 2, label: MaskTbl}
+    0x2052E: {type: code, arch: 68k, size: 12, label: UpdateSRT}
+    0x2053A: {type: code, arch: 68k, size: 2, label: InsertSRT}
+    0x2053C: {type: code, arch: 68k, size: 0x7A, label: ModifySRT}
+    0x205B6: {type: code, arch: 68k, size: 0x12, label: SearchSRT}
+    0x205C8: {type: code, arch: 68k, size: 0x70, label: FindSRTRec}
+    0x20638: {type: code, arch: 68k, size: 0x98, label: DeleteSRTRec}
+    0x206D0: {type: code, arch: 68k, size: 4, label: SlotRsrcInfo}
+    0x206D4: {type: code, arch: 68k, size: 0x24, label: GetsRsrcInfo}
+    0x206F8: {type: code, arch: 68k, size: 0x3A, label: SetsRsrcState}
+    0x20732: {type: code, arch: 68k, size: 0x78, label: pNewSRTEntry}
+    0x207AA: {type: code, arch: 68k, size: 0xB4, label: pInitEntry}
+    0x2085E: {type: code, arch: 68k, size: 0x2C, label: MapUnit_0}
+    0x2088A: {type: code, arch: 68k, size: 0x28, label: pAllocSRTBlk}
+    0x208B2: {type: code, arch: 68k, size: 0x40, label: GetSRTEntry}
+    0x208F2: {type: code, arch: 68k, size: 0x56, label: pSrToSpBlock}
+    0x20948: {type: code, arch: 68k, size: 10, label: NEXTSRSRC}
+    0x20952: {type: code, arch: 68k, size: 10, label: PSRTOSPBLOCK}
+    0x2095C: {type: code, arch: 68k, size: 10, label: GETSRTENTRY}
+    0x20966: {type: code, arch: 68k, size: 10, label: PALLOCSRTBLK}
+    0x20970: {type: code, arch: 68k, size: 10, label: PINITENTRY}
+    0x2097A: {type: code, arch: 68k, size: 10, label: PNEWSRTENTRY}
+    0x20984: {type: code, arch: 68k, size: 10, label: SETSRSRCSTATE}
+    0x2098E: {type: code, arch: 68k, size: 10, label: GETSRSRCINFO}
+    0x20998: {type: code, arch: 68k, size: 10, label: SLOTRSRCINFO}
+    0x209A2: {type: code, arch: 68k, size: 10, label: DELETESRTREC}
+    0x209AC: {type: code, arch: 68k, size: 10, label: FINDSRTREC}
+    0x209B6: {type: code, arch: 68k, size: 10, label: SEARCHSRT}
+    0x209C0: {type: code, arch: 68k, size: 10, label: INSERTSRT}
+    0x209CA: {type: code, arch: 68k, size: 10, label: UPDATESRT}
+    0x209D4: {type: code, arch: 68k, size: 10, label: GETTYPESRSRC}
+    0x209DE: {type: code, arch: 68k, size: 10, label: NEXTTYPESRSRC}
+    0x209E8: {type: code, arch: 68k, size: 10, label: GETSRSRC}
+    0x209F2: {type: align, boundary: 16}
+    0x20A00: {type: code, arch: 68k, size: 0x60, label: CalcStep}
+    0x20A60: {type: array, format: hex, size: 64, elsize: 4, label: ByteTable}
+    0x20AA0: {type: array, format: hex, size: 64, elsize: 4, label: IdTable}
+    0x20AE0: {type: array, format: hex, size: 80, elsize: 4, label: ThreeByteTbl}
+    0x20B30: {type: code, arch: 68k, size: 10, label: CALCSTEP}
+    0x20B3A: {type: align, boundary: 16}
+    0x20B40: {type: code, arch: 68k, size: 0x90, label: OffsetData}
+    0x20BD0: {type: code, arch: 68k, size: 10, label: OFFSETDATA}
+    0x20BDA: {type: align, boundary: 16}
+    0x20BE0: {type: code, arch: 68k, size: 0x68, label: ReadPBSize}
+    0x20C48: {type: code, arch: 68k, size: 10, label: READPBSIZE}
+    0x20C52: {type: align, boundary: 16}
+    0x20C60: {type: code, arch: 68k, size: 0x54, label: pRead4Bytes}
+    0x20CB4: {type: code, arch: 68k, size: 0x38, label: pGetBoard}
+    0x20CEC: {type: code, arch: 68k, size: 10, label: PREAD4BYTES}
+    0x20CF6: {type: code, arch: 68k, size: 10, label: PGETBOARD}
+    0x20D00: {type: code, arch: 68k, size: 0x52, label: pBusException}
+    0x20D52: {type: code, arch: 68k, size: 0x28, label: pInstallBus}
+    0x20D7A: {type: code, arch: 68k, size: 0x20, label: pRestoreBus}
+    0x20D9A: {type: code, arch: 68k, size: 0x46, label: p040BusException}
+    0x20DE0: {type: code, arch: 68k, size: 0x96, label: AddCard}
+    0x20E76: {type: code, arch: 68k, size: 0x94, label: RemoveCard}
+    0x20F0A: {type: code, arch: 68k, size: 0xE4, label: CheckSlot}
+    0x20FEE: {type: code, arch: 68k, size: 0xAA, label: GetBoardID}
+    0x21098: {type: code, arch: 68k, size: 0x2C, label: FindDevBaseSlot0}
+    0x210C4: {type: code, arch: 68k, size: 10, label: PBUSEXCEPTION}
+    0x210CE: {type: code, arch: 68k, size: 10, label: FINDDEVBASESLOT0}
+    0x210D8: {type: code, arch: 68k, size: 10, label: CHECKSLOT}
+    0x210E2: {type: code, arch: 68k, size: 10, label: REMOVECARD}
+    0x210EC: {type: code, arch: 68k, size: 10, label: ADDCARD}
+    0x210F6: {type: code, arch: 68k, size: 10, label: PRESTOREBUS}
+    0x21100: {type: code, arch: 68k, size: 10, label: PINSTALLBUS}
+    0x2110A: {type: align, boundary: 16}
+    # end of Slot Manager
     0x3A24A: {type: code, arch: 68k, size 4, label: DoEject}
