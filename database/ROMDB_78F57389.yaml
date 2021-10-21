@@ -33,19 +33,40 @@ annot_items:
     0x42E: {type: code, arch: 68k, size: 0x4E, label: WhichCPU}
     0x47C: {type: code, arch: 68k, size: 0xC, label: WhichBoard}
     0x488: {type: code, arch: 68k, size: 0x100, label: SetUpTimeK}
+    # Cuda Manager
     0x9EE0:
       type: code
       arch: 68k
-      size: 0x154
+      size: 0x1AE
       label: CudaDispatch
       subregs:
       - type: int
         offset: 0xA032
+        format: hex
         size: 2
     0xA08E: {type: code, arch: 68k, size: 0x14, label: PollByte}
     0xA0A2: {type: code, arch: 68k, size: 0xE, label: SendByte}
     0xA0B0: {type: code, arch: 68k, size: 0x14, label: CudaCallShiftRegIRQ}
     0xA0C4: {type: code, arch: 68k, size: 0x24A, label: CudaShiftRegIRQ}
+    0xA30E: {type: code, arch: 68k, size: 0x14C, label: SetTransferParams}
+    0xA45A: {type: code, arch: 68k, size: 0x3A, label: CheckCudaPacket}
+    0xA494: {type: code, arch: 68k, size: 0x1E, label: CudaTickHandler}
+    0xA4B2: {type: code, arch: 68k, size: 0xAC, label: CudaInit}
+    0xA55E: {type: code, arch: 68k, size: 0x130, label: SendCudaCmd}
+    0xA68E: {type: code, arch: 68k, size: 0x1E, label: RealAbort}
+    0xA6AC: {type: code, arch: 68k, size: 0x12, label: IrqMissed}
+    0xA6BE: {type: code, arch: 68k, size: 0x3C, label: StartRPkt}
+    0xA6FA: {type: code, arch: 68k, size: 0x2E, label: sendByte1}
+    0xA728: {type: code, arch: 68k, size: 0x16, label: readByte}
+    0xA73E: {type: code, arch: 68k, size: 0x10, label: readAttn}
+    0xA74E: {type: code, arch: 68k, size: 0xC, label: delay100us}
+    0xA75A: {type: code, arch: 68k, size: 10, label: IRQMISSED}
+    0xA764: {type: code, arch: 68k, size: 10, label: REALABORT}
+    0xA76E: {type: code, arch: 68k, size: 10, label: CUDACALLSHIFTREGIRQ}
+    0xA778: {type: code, arch: 68k, size: 10, label: CUDASHIFTREGIRQ}
+    0xA782: {type: code, arch: 68k, size: 10, label: CUDATICKHANDLER}
+    0xA78C: {type: code, arch: 68k, size: 10, label: CUDADISPATCH}
+    0xA796: {type: align, boundary: 16}
     # SlotMgrInit.a
     0x1AF40: {type: code, arch: 68k, size: 0x3C, label: InitJmpTbl}
     0x1AF7C: {type: align, boundary: 16}
