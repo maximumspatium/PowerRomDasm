@@ -47,6 +47,7 @@ TRAP_TABLE = {
     0xA128 : "_RecoverHandle",
     0xA146 : "_GetTrapAddress",
     0xA162 : "_PurgeSpace",
+    0xA198 : "_HWPriv",
     0xA1AD : "_Gestalt",
     0xA025 : "_GetHandleSize",
     0xA31E : "_NewPtrClear",

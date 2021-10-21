@@ -110,6 +110,41 @@ annot_items:
         - type: align
           offset: 0x146B2
           boundary: 8
+    # SlotMgrInit.a
+    0x1F1F0: {type: code, arch: 68k, size: 0x3C, label: InitJmpTbl}
+    0x1F22C: {type: align, boundary: 16}
+    0x1F230: {type: array, format: hex, size: 124, elsize: 2, label: SDMJmpTable}
+    0x1F2AC: {type: align, boundary: 16}
+    0x1F2B0: {type: code, arch: 68k, size: 0xD2, label: StartSDeclMgr}
+    0x1F382: {type: code, arch: 68k, size: 0x56, label: AllocSlot}
+    0x1F3D8: {type: code, arch: 68k, size: 0xB6, label: InitsInfo}
+    0x1F48E: {type: code, arch: 68k, size: 0x124, label: VerifySlot}
+    0x1F5B2: {type: code, arch: 68k, size: 0x5E, label: GetByteLane}
+    0x1F610: {type: code, arch: 68k, size: 0x26, label: VerifyFormat}
+    0x1F636: {type: code, arch: 68k, size: 0x8C, label: VerifyCRC}
+    0x1F6C2: {type: code, arch: 68k, size: 0x84, label: InitsRsrc}
+    0x1F746: {type: code, arch: 68k, size: 0xB4, label: InitsPRAM}
+    0x1F7FA: {type: code, arch: 68k, size: 0x20, label: InitPrimary}
+    0x1F81A: {type: code, arch: 68k, size: 0x64, label: doPrimaryInit}
+    0x1F87E: {type: code, arch: 68k, size: 0x32, label: PatchPrimaryInit}
+    0x1F8B0: {type: code, arch: 68k, size: 6, label: StubCheckSlot}
+    0x1F8B6: {type: code, arch: 68k, size: 6, label: StubAddCard}
+    0x1F8BC: {type: code, arch: 68k, size: 6, label: StubRemoveCard}
+    0x1F8C2: {type: code, arch: 68k, size: 0x8C, label: EnableBlockXfer}
+    0x1F94E: {type: code, arch: 68k, size: 10, label: STUBREMOVECARD}
+    0x1F958: {type: code, arch: 68k, size: 10, label: STUBADDCARD}
+    0x1F962: {type: code, arch: 68k, size: 10, label: STUBCHECKSLOT}
+    0x1F96C: {type: code, arch: 68k, size: 10, label: INITPRIMARY}
+    0x1F976: {type: code, arch: 68k, size: 10, label: INITSPRAM}
+    0x1F980: {type: code, arch: 68k, size: 10, label: INITSRSRC}
+    0x1F98A: {type: code, arch: 68k, size: 10, label: VERIFYSLOT}
+    0x1F994: {type: code, arch: 68k, size: 10, label: INITSINFO}
+    0x1F99E: {type: align, boundary: 16}
+    0x1F9A0: {type: code, arch: 68k, size: 0x30, label: Secondary_Init}
+    0x1F9D0: {type: code, arch: 68k, size: 0x98, label: DoSecondaryInit}
+    0x1FA68: {type: code, arch: 68k, size: 10, label: DOSECONDARYINIT}
+    0x1FA72: {type: code, arch: 68k, size: 10, label: SECONDARY_INIT}
+    0x1FA7C: {type: align, boundary: 16}
     # Slot Manager 2.3
     0x1FA80: {type: fixlenstr, size: 16, label: SlotMgrVersion}
     0x1FA90: {type: code, arch: 68k, size: 0x0E, label: SlotManager}
