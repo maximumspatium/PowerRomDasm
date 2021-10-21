@@ -101,6 +101,41 @@ annot_items:
     0x181C: {type: code, arch: 68k, size: 0x18, label: EraseMyIcon}
     0x1834: {type: code, arch: 68k, size: 0x38, label: PlotMyIcon}
     0x186C: {type: code, arch: 68k, size: 0x34, label: PushIconRect}
+    # Cuda Manager
+    0xC2E0:
+        type: code
+        arch: 68k
+        size: 0x12C
+        label: CudaDispatch
+        subregs:
+            - type: int
+              offset: 0xC3B4
+              format: hex
+              size: 2
+    0xC40C: {type: code, arch: 68k, size: 0x14, label: PollByte}
+    0xC420: {type: code, arch: 68k, size: 0xC, label: SendByte}
+    0xC42C: {type: code, arch: 68k, size: 0x14, label: CudaCallShiftRegIRQ}
+    0xC440: {type: code, arch: 68k, size: 0x230, label: CudaShiftRegIRQ}
+    0xC670: {type: code, arch: 68k, size: 0x132, label: SetTransferParams}
+    0xC7A2: {type: code, arch: 68k, size: 0x3A, label: CheckCudaPacket}
+    0xC7DC: {type: code, arch: 68k, size: 0x1E, label: CudaTickHandler}
+    0xC7FA: {type: code, arch: 68k, size: 0xA6, label: CudaInit}
+    0xC8A0: {type: code, arch: 68k, size: 0x120, label: SendCudaCmd}
+    0xC9C0: {type: code, arch: 68k, size: 0x1A, label: RealAbort}
+    0xC9DA: {type: code, arch: 68k, size: 0x10, label: IrqMissed}
+    0xC9EA: {type: code, arch: 68k, size: 0x34, label: StartRPkt}
+    0xCA1E: {type: code, arch: 68k, size: 0x2A, label: sendByte1}
+    0xCA48: {type: code, arch: 68k, size: 0x14, label: readByte}
+    0xCA5C: {type: code, arch: 68k, size: 0xE, label: readAttn}
+    0xCA6A: {type: code, arch: 68k, size: 0xC, label: delay100us}
+    0xCA76: {type: code, arch: 68k, size: 10, label: IRQMISSED}
+    0xCA80: {type: code, arch: 68k, size: 10, label: REALABORT}
+    0xCA8A: {type: code, arch: 68k, size: 10, label: CUDACALLSHIFTREGIRQ}
+    0xCA94: {type: code, arch: 68k, size: 10, label: CUDASHIFTREGIRQ}
+    0xCA9E: {type: code, arch: 68k, size: 10, label: CUDATICKHANDLER}
+    0xCAA8: {type: code, arch: 68k, size: 10, label: CUDADISPATCH}
+    0xCAB2: {type: align, boundary: 16}
+    # A-Trap dispatcher
     0x14650:
       type: code
       arch: 68k
