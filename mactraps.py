@@ -6,12 +6,14 @@
 TRAP_TABLE = {
     # trapN    trap name
     0xA000 : "_Open",
+    0xA001 : "_Close",
     0xA002 : "_Read",
     0xA004 : "_Control",
     0xA005 : "_Status",
     0xA019 : "_InitZone",
     0xA01B : "_SetZone",
     0xA01F : "_DisposePtr",
+    0xA023 : "_DisposeHandle",
     0xA029 : "_HLock",
     0xA02D : "_SetApplLimit",
     0xA02E : "_BlockMove",
@@ -50,6 +52,7 @@ TRAP_TABLE = {
     0xA31E : "_NewPtrClear",
     0xA322 : "_NewHandleClear",
     0xA346 : "_GetOSTrapAddress",
+    0xA440 : "_ReserveMemSys",
     0xA51E : "_NewPtrSys",
     0xA522 : "_NewHandleSys",
     0xA71E : "_NewPtrSysClear",
