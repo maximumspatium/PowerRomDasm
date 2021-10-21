@@ -198,6 +198,14 @@ class ROMDisassembler:
 
     def fmt_entry(self, entry, offset):
         print("")
+
+        if entry['type'] == 'align':
+            start = offset
+            end   = align(start, entry['boundary'])
+            print(hex(self.start_addr + start).ljust(15), end='')
+            print('align\t' + str(entry['boundary']))
+            return end - start
+
         print((entry['label'] + ':').ljust(15))
 
         if entry['type'] == 'array':
@@ -221,13 +229,15 @@ class ROMDisassembler:
             else:
                 print("Unknown code region architecture " + entry['arch'])
 
+        return entry['size']
+
     def dasm_region(self, start, end):
         offset = start
         while offset < end:
             if offset in self.rom_db['annot_items']:
                 entry = self.rom_db['annot_items'][offset]
-                self.fmt_entry(entry, offset)
-                offset += entry['size']
+                size = self.fmt_entry(entry, offset)
+                offset += size
             else:
                 print(hex(self.start_addr + offset).ljust(15), end='')
                 print("dc.b\t0x%X" % struct.unpack('>B', self.rom_data[offset:offset+1]))
