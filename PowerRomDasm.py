@@ -228,6 +228,11 @@ class ROMDisassembler:
                 print("PPC disassembler not implemented yet")
             else:
                 print("Unknown code region architecture " + entry['arch'])
+        elif entry['type'] == 'fixlenstr': # fixed-length string
+            print(hex(self.start_addr + offset).ljust(15), end='')
+            str_len = entry['size']
+            fmt_str = '%is' % str_len
+            print('"%s"' % struct.unpack(fmt_str, self.rom_data[offset:offset+str_len])[0].decode('mac_roman'))
 
         return entry['size']
 
