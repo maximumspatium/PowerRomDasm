@@ -46,6 +46,41 @@ annot_items:
     0xA0A2: {type: code, arch: 68k, size: 0xE, label: SendByte}
     0xA0B0: {type: code, arch: 68k, size: 0x14, label: CudaCallShiftRegIRQ}
     0xA0C4: {type: code, arch: 68k, size: 0x24A, label: CudaShiftRegIRQ}
+    # SlotMgrInit.a
+    0x1AF40: {type: code, arch: 68k, size: 0x3C, label: InitJmpTbl}
+    0x1AF7C: {type: align, boundary: 16}
+    0x1AF80: {type: array, format: hex, size: 124, elsize: 2, label: SDMJmpTable}
+    0x1AFFC: {type: align, boundary: 16}
+    0x1B000: {type: code, arch: 68k, size: 0xCC, label: StartSDeclMgr}
+    0x1B0CC: {type: code, arch: 68k, size: 0x56, label: AllocSlot}
+    0x1B122: {type: code, arch: 68k, size: 0xB6, label: InitsInfo}
+    0x1B1D8: {type: code, arch: 68k, size: 0x124, label: VerifySlot}
+    0x1B2FC: {type: code, arch: 68k, size: 0x5E, label: GetByteLane}
+    0x1B35A: {type: code, arch: 68k, size: 0x26, label: VerifyFormat}
+    0x1B380: {type: code, arch: 68k, size: 0x8C, label: VerifyCRC}
+    0x1B40C: {type: code, arch: 68k, size: 0x84, label: InitsRsrc}
+    0x1B490: {type: code, arch: 68k, size: 0xC2, label: InitsPRAM}
+    0x1B552: {type: code, arch: 68k, size: 0x20, label: InitPrimary}
+    0x1B572: {type: code, arch: 68k, size: 0x64, label: doPrimaryInit}
+    0x1B5D6: {type: code, arch: 68k, size: 0x42, label: PatchPrimaryInit}
+    0x1B618: {type: code, arch: 68k, size: 6, label: StubCheckSlot}
+    0x1B61E: {type: code, arch: 68k, size: 6, label: StubAddCard}
+    0x1B624: {type: code, arch: 68k, size: 6, label: StubRemoveCard}
+    0x1B62A: {type: code, arch: 68k, size: 2, label: EnableBlockXfer}
+    0x1B62C: {type: code, arch: 68k, size: 10, label: STUBREMOVECARD}
+    0x1B636: {type: code, arch: 68k, size: 10, label: STUBADDCARD}
+    0x1B640: {type: code, arch: 68k, size: 10, label: STUBCHECKSLOT}
+    0x1B64A: {type: code, arch: 68k, size: 10, label: INITPRIMARY}
+    0x1B654: {type: code, arch: 68k, size: 10, label: INITSPRAM}
+    0x1B65E: {type: code, arch: 68k, size: 10, label: INITSRSRC}
+    0x1B668: {type: code, arch: 68k, size: 10, label: VERIFYSLOT}
+    0x1B672: {type: code, arch: 68k, size: 10, label: INITSINFO}
+    0x1B67C: {type: align, boundary: 16}
+    0x1B680: {type: code, arch: 68k, size: 0x30, label: Secondary_Init}
+    0x1B6B0: {type: code, arch: 68k, size: 0x98, label: DoSecondaryInit}
+    0x1B748: {type: code, arch: 68k, size: 10, label: DOSECONDARYINIT}
+    0x1B752: {type: code, arch: 68k, size: 10, label: SECONDARY_INIT}
+    0x1B75C: {type: align, boundary: 16}
     # Slot Manager 2.3
     0x1B760: {type: fixlenstr, size: 16, label: SlotMgrVersion}
     0x1B770: {type: code, arch: 68k, size: 0x0E, label: SlotManager}
