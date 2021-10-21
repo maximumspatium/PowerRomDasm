@@ -195,6 +195,24 @@ class ROMDisassembler:
         #print(regs)
         return regs
 
+    def fmt_array(self, entry, offset):
+        count = entry['size'] // entry['elsize']
+        for i in range(count):
+            self.fmt_single_entry(entry['format'], entry['elsize'], offset)
+            offset += entry['elsize']
+
+    def parse_struct(self, fields, offset):
+        size_acc = 0
+        for field in fields:
+            if field['type'] == 'int':
+                self.fmt_single_entry(field['format'], field['size'], offset)
+            elif field['type'] == 'array':
+                self.fmt_array(field, offset)
+            else:
+                print("Unknown struct field type %s" % field['type'])
+            offset += field['size']
+            size_acc += field['size']
+        return size_acc
 
     def fmt_entry(self, entry, offset):
         print("")
@@ -209,10 +227,7 @@ class ROMDisassembler:
         print((entry['label'] + ':').ljust(15))
 
         if entry['type'] == 'array':
-            count = entry['size'] // entry['elsize']
-            for i in range(count):
-                self.fmt_single_entry(entry['format'], entry['elsize'], offset)
-                offset += entry['elsize']
+            self.fmt_array(entry, offset)
         elif entry['type'] == 'int':
             self.fmt_single_entry(entry['format'], entry['size'], offset)
         elif entry['type'] == 'code':
@@ -233,6 +248,8 @@ class ROMDisassembler:
             str_len = entry['size']
             fmt_str = '%is' % str_len
             print('"%s"' % struct.unpack(fmt_str, self.rom_data[offset:offset+str_len])[0].decode('mac_roman'))
+        elif entry['type'] == 'struct':
+            return self.parse_struct(entry['fields'], offset)
 
         return entry['size']
 
