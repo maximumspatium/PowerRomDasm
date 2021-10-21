@@ -117,19 +117,6 @@ class M68KDasm:
             print(instr['mnem'], '\t', end='')
             print(','.join(instr['ops']))
 
-    def dasm_regions(self, start_addr, size, data, regions):
-        self.labels = {}
-        for reg in regions:
-            if reg[2] == 'align':
-                print(hex(start_addr + reg[0]).ljust(15), end='')
-                print('align\t' + str(reg[3]))
-            elif reg[2] == 'code':
-                reg_size = reg[1] - reg[0] + 1
-                self.dasm_region(start_addr + reg[0], reg_size,
-                    data[reg[3]:reg[3]+reg_size])
-            else:
-                print("Unknown region type " + reg[2])
-
 
 class ROMDisassembler:
     def __init__(self, rom_data, rom_db):
@@ -173,23 +160,56 @@ class ROMDisassembler:
             else:
                 print("dc.l\t0x%X" % dest_offset)
 
+    def dasm_regions(self, start_addr, size, data, regions):
+        self.labels = {}
+        for reg in regions:
+            if reg[2] == 'align':
+                print(hex(start_addr + reg[0]).ljust(15), end='')
+                print('align\t' + str(reg[3]))
+            elif reg[2] == 'code':
+                reg_size = reg[1] - reg[0] + 1
+                self.m68k_dasm.dasm_region(start_addr + reg[0], reg_size,
+                    data[reg[3]:reg[3]+reg_size])
+            elif reg[2] == 'int':
+                print("")
+                print((reg[1] + ':').ljust(15))
+                self.fmt_single_entry(reg[3], reg[4], reg[0])
+            else:
+                print("Unknown region type " + reg[2])
+
     def parse_subregs(self, start, size, subregs):
         #print("This entry has subregions", subregs)
         regs = []
         reg_start = start
         for reg in subregs:
-            if reg['type'] != 'align':
+            if reg['type'] == 'align':
+                offset = reg['offset']
+                if offset < reg_start or offset >= (start + size):
+                    print("Invalid subregion offset: 0x%X" % offset)
+                    return regs
+                regs.append((reg_start, offset - 1, 'code', reg_start - start))
+                boundary = reg['boundary']
+                reg_end = align(offset, boundary)
+                regs.append((offset, reg_end - 1, 'align', boundary))
+                reg_start = reg_end
+                print("reg_start=%d" % reg_start)
+            elif reg['type'] == 'int':
+                offset = reg['offset']
+                if offset < reg_start or offset >= (start + size):
+                    print("Invalid subregion offset: 0x%X" % offset)
+                    return regs
+                regs.append((reg_start, offset - 1, 'code', reg_start - start))
+                reg_size = reg['size']
+                if 'label' in reg:
+                    label = reg['label']
+                else:
+                    label = 'l_{:x}'.format(self.start_addr + offset)
+                self.m68k_dasm.labels[self.start_addr + offset] = label
+                regs.append((offset, label, 'int', reg['format'], reg_size))
+                reg_start = offset + reg_size
+            else:
                 print("Unknown subregion type " + reg['type'])
                 return regs
-            offset = reg['offset']
-            if offset < reg_start or offset >= (start + size):
-                print("Invalid subregion offset: 0x%X" % offset)
-                return regs
-            regs.append((reg_start, offset - 1, 'code', reg_start - start))
-            boundary = reg['boundary']
-            reg_end = align(offset, boundary)
-            regs.append((offset, reg_end - 1, 'align', boundary))
-            reg_start = reg_end
         if reg_start < (start + size):
             regs.append((reg_start, (start + size) - 1, 'code', reg_start - start))
         #print(regs)
@@ -237,8 +257,7 @@ class ROMDisassembler:
                     regs = self.parse_subregs(offset, size, entry['subregs'])
                 else:
                     regs = [(offset, offset + size - 1, 'code', 0)]
-                self.m68k_dasm.dasm_regions(self.start_addr, size,
-                    self.rom_data[offset:offset+size], regs)
+                self.dasm_regions(self.start_addr, size, self.rom_data[offset:offset+size], regs)
             elif entry['arch'] == 'ppc':
                 print("PPC disassembler not implemented yet")
             else:
