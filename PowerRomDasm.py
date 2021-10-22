@@ -12,6 +12,7 @@ from ruamel.yaml import YAML
 from capstone import *
 from capstone.m68k import *
 
+import os
 import struct
 
 def bit_not(n, numbits=32):
@@ -317,9 +318,11 @@ if __name__ == "__main__":
         check_sum = struct.unpack('>I', rom_data[0:4])[0]
         print("ROM Checksum: %X" % check_sum)
 
+        my_path = os.path.dirname(os.path.realpath(__file__))
+
         db_name = 'ROMDB_' + '{:x}'.format(int(check_sum)).upper() + '.yaml'
 
-        with open('database/' + db_name, 'rb') as db_file:
+        with open(my_path + '/database/' + db_name, 'rb') as db_file:
             yaml = YAML()
             annot_db = yaml.load(db_file)
 
