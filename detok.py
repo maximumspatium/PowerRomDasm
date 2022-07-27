@@ -169,6 +169,7 @@ FORTH_WORDS = {
     0xFD  : ('version1',     ['fcode_hdr', 'offset8']),
     0x102 : ('my-address',   []),
     0x103 : ('my-space',     []),
+    0x104 : ('memmap',       []),
     0x110 : ('property',     []),
     0x111 : ('encode-int',   []),
     0x112 : ('encode+',      []),
@@ -179,6 +180,7 @@ FORTH_WORDS = {
     0x11A : ('device-type',  []),
     0x11C : ('is-install',   []),
     0x11D : ('is-remove',    []),
+    0x11F : ('new-device',   []),
     0x125 : ('get-msecs',    []),
     0x126 : ('ms',           []),
     0x128 : ('decode-phys',  []),
@@ -192,10 +194,12 @@ FORTH_WORDS = {
     0x18B : ('fb8-install',  []),
     0x201 : ('device-name',  []),
     0x203 : ('my-self',      []),
+    0x204 : ('find-package', []),
     0x207 : ('find-method',  []),
     0x209 : ('$call-parent', []),
     0x20A : ('my-parent',    []),
     0x20B : ('ihandle>phandle', []),
+    0x20F : ('$open-package', []),
     0x216 : ('abort',        []),
     0x21A : ('get-my-property', []),
     0x21B : ('decode-int',   []),
@@ -331,5 +335,4 @@ class DeTokenizer():
             elif tok_num in self.user_dict: # check user dictionary
                 print("0x%X ; %s" % (tok_num, self.user_dict[tok_num]))
             else:
-                print("Token %X not found at offset 0x%X!" % (tok_num, self.pos))
-                crash()
+                print("0x%X ; %s" % (tok_num, 'undefined_' + format(tok_num, 'x')))

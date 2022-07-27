@@ -1,7 +1,7 @@
 '''
     DeTokenizer for Apple OpenFirmware.
 
-    Author: Max Poliakovski 2019-2021
+    Author: Max Poliakovski 2019-2022
 '''
 import struct
 from argparse import ArgumentParser
@@ -42,9 +42,6 @@ def populate_user_dict(src_dict, dst_dict):
             dst_dict[tok_num] = word['name']
 
     # add Apple specific FCodes for managing stack frames
-    for i in range(0,9):
-        dst_dict[0x407 + i] = '(pushlocals_%s)' % i
-
     for i in range(0,8):
         dst_dict[0x410 + i] = '(local@%s)' % i
         dst_dict[0x418 + i] = '(local!%s)' % i
@@ -60,6 +57,10 @@ def main():
                         dest='of_offset',
                         help='offset to OF container (autodetect attempt if omitted)',
                         metavar='OF_OFFSET', required=True)
+    parser.add_argument('--of_version', type=int,
+                        dest='of_version',
+                        help='Open Firmware version used to produce the input token stream',
+                        metavar='OF_VERSION', default=2)
     opts = parser.parse_args()
 
     with open(opts.rom_path, 'rb') as infile:
@@ -88,6 +89,15 @@ def main():
         detokenizer = DeTokenizer(prog_stream, prog_size)
 
         populate_user_dict(dict, detokenizer.user_dict)
+
+        # OF v1.x uses 0x401,XX sequences for (pushlocals_XX)
+        # where the 2nd byte XX specifies the number of locals to push
+        # OF v2.x uses FCodes in the range 0x407...0x40F for the same purpose
+        if opts.of_version == 1:
+            detokenizer.builtin_dict[0x401] = ('(pushlocals)', ['offset'])
+        else:
+            for i in range(0,9):
+                detokenizer.user_dict[0x407 + i] = '(pushlocals_%s)' % i
 
         detokenizer.decode_stream()
 
